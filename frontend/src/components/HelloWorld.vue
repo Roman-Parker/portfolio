@@ -27,4 +27,7 @@ li {
 a {
   color: #42b983;
 }
+a:hover {
+   text-decoration:underline;
+}
 </style>
