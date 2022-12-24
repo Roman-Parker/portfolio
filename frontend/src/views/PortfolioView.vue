@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>Portfolio</h1>
-    <div class="flex justify-center w-full items-center min-h-screen">
-  <div class="rounded-lg shadow-lg bg-white max-w-sm">
+    <div class="flex justify-center w-full items-center">
+  <div class="rounded-lg shadow-lg bg-white max-w-sm mx-4">
     <a href="#!">
       <img class="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt=""/>
     </a>
@@ -17,7 +17,7 @@
       <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
     </div>
 </div>
-<div class="rounded-lg shadow-lg bg-white max-w-sm">
+<div class="rounded-lg shadow-lg bg-white max-w-sm mx-4">
     <a href="#!">
       <img class="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt=""/>
     </a>
@@ -30,7 +30,7 @@
       <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
     </div>
 </div>
-<div class="rounded-lg shadow-lg bg-white max-w-sm">
+<div class="rounded-lg shadow-lg bg-white max-w-sm mx-4">
     <a href="#!">
       <img class="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt=""/>
     </a>
@@ -43,7 +43,7 @@
       <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
     </div>
 </div>
-<div class="rounded-lg shadow-lg bg-white max-w-sm">
+<div class="rounded-lg shadow-lg bg-white max-w-sm mx-4">
     <a href="#!">
       <img class="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt=""/>
     </a>
@@ -61,9 +61,14 @@
 <h1 style="z-index:10">Test</h1>
 </template>
 
-<script>
-export default {
 
+
+<script>
+import FooterComponent from "@/components/FooterComponent.vue"
+export default {
+  components:{
+    FooterComponent
+  }
 }
 </script>
 

@@ -6,7 +6,17 @@
     <router-link to="/contact">Contact</router-link>
   </nav>
   <router-view/>
+  <FooterComponent/>
 </template>
+
+<script>
+ import FooterComponent from "@/components/FooterComponent.vue"
+export default {
+  components:{
+    FooterComponent
+  }
+}
+</script>
 
 <style>
 #app {
