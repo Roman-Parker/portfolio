@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-  </div>
+    <div class="home">
+    </div>
 </template>
 
 <script>
@@ -8,9 +8,9 @@
 import FooterComponent from '@/components/FooterComponent.vue'
 
 export default {
-  name: 'HomeView',
-  components: {
-    FooterComponent
-  }
+    name: 'HomeView',
+    components: {
+        FooterComponent
+    }
 }
 </script>
