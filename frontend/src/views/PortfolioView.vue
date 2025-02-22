@@ -1,79 +1,155 @@
 <template>
-    <div>
-        <h1>Portfolio</h1>
-        <div class="flex justify-center w-full items-center">
-            <div class="rounded-lg shadow-lg bg-white max-w-sm mx-4">
-                <a href="#!">
-                    <img class="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt="" />
-                </a>
-                <div class="p-6">
-                    <h5 class="text-gray-900 text-xl font-medium mb-2">Card title</h5>
-                    <p class="text-gray-700 text-base mb-4">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.Some quick example text to build on the card title and make up the bulk of the card's
-                        content.Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                    </p>
-                    <button type="button"
-                        class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
-                </div>
-            </div>
-            <div class="rounded-lg shadow-lg bg-white max-w-sm mx-4">
-                <a href="#!">
-                    <img class="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt="" />
-                </a>
-                <div class="p-6">
-                    <h5 class="text-gray-900 text-xl font-medium mb-2">Card title</h5>
-                    <p class="text-gray-700 text-base mb-4">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                    </p>
-                    <button type="button"
-                        class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
-                </div>
-            </div>
-            <div class="rounded-lg shadow-lg bg-white max-w-sm mx-4">
-                <a href="#!">
-                    <img class="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt="" />
-                </a>
-                <div class="p-6">
-                    <h5 class="text-gray-900 text-xl font-medium mb-2">Card title</h5>
-                    <p class="text-gray-700 text-base mb-4">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                    </p>
-                    <button type="button"
-                        class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
-                </div>
-            </div>
-            <div class="rounded-lg shadow-lg bg-white max-w-sm mx-4">
-                <a href="#!">
-                    <img class="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt="" />
-                </a>
-                <div class="p-6">
-                    <h5 class="text-gray-900 text-xl font-medium mb-2">Card title</h5>
-                    <p class="text-gray-700 text-base mb-4">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                    </p>
-                    <button type="button"
-                        class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
-                </div>
-            </div>
+    <div class="min-h-screen bg-darkSlate text-offWhite">
+      <!-- Portfolio Container -->
+      <section class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl md:text-5xl font-bold text-center mb-8">My Portfolio</h1>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-2 mb-8">
+          <button
+            v-for="tech in allTechnologies"
+            :key="tech"
+            @click="toggleTechFilter(tech)"
+            class="px-4 py-2 rounded border border-turquoise transition-colors"
+            :class="selectedTechs.includes(tech)
+              ? 'bg-turquoise text-gunmetal'
+              : 'bg-gunmetal text-offWhite hover:bg-turquoise-light hover:text-gunmetal'"
+          >
+            {{ tech }}
+          </button>
         </div>
+
+        <!-- Project Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            v-for="project in filteredProjects"
+            :key="project.id"
+            class="bg-gunmetal rounded-xl p-4 shadow-xl flex flex-col"
+          >
+            <img
+              :src="project.image"
+              :alt="project.title"
+              class="w-full h-48 object-cover rounded-md mb-4"
+            />
+
+            <h3 class="text-xl font-semibold mb-2">{{ project.title }}</h3>
+            <p class="text-base text-coolGray mb-4">
+              {{ project.description }}
+            </p>
+
+            <!-- Tech Tags -->
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span
+                v-for="tech in project.technologies"
+                :key="tech"
+                class="text-sm bg-turquoise text-gunmetal px-2 py-1 rounded"
+              >
+                {{ tech }}
+              </span>
+            </div>
+
+            <!-- View Project Button or Link -->
+            <router-link
+              :to="project.link"
+              class="mt-auto inline-block px-4 py-2 bg-turquoise hover:bg-turquoise-light text-gunmetal rounded font-semibold transition-colors"
+            >
+              View Project
+            </router-link>
+          </div>
+        </div>
+      </section>
     </div>
-    <h1 style="z-index:10">Test</h1>
-</template>
+  </template>
 
+  <script>
+  export default {
+    name: 'PortfolioPage',
+    data() {
+      return {
+        // Active technology filters
+        selectedTechs: [],
 
+        // Example filters
+        allTechnologies: [
+          'Python',
+          'Vue',
+          'Docker',
+          'JavaScript',
+          'Node.js'
+        ],
 
-<script>
-import FooterComponent from "@/components/FooterComponent.vue"
-export default {
-    components: {
-        FooterComponent
+        // Example project data
+        projects: [
+          {
+            id: 1,
+            title: 'Vue Docker App',
+            image:
+              'https://via.placeholder.com/400x200.png?text=Vue+Docker+Project',
+            description:
+              'A containerized Vue.js application showcasing containerization with Docker.',
+            technologies: ['Vue', 'Docker'],
+            link: '/portfolio/vue-docker'
+          },
+          {
+            id: 2,
+            title: 'Python Data Pipeline',
+            image: 'https://via.placeholder.com/400x200.png?text=Python+Data+Project',
+            description:
+              'Data processing pipeline built with Python, leveraging various libraries.',
+            technologies: ['Python'],
+            link: '/portfolio/python-pipeline'
+          },
+          {
+            id: 3,
+            title: 'Fullstack JS App',
+            image:
+              'https://via.placeholder.com/400x200.png?text=Fullstack+JavaScript+App',
+            description:
+              'A Node.js backend with a Vue frontend for real-time chat and data handling.',
+            technologies: ['JavaScript', 'Vue', 'Node.js'],
+            link: '/portfolio/fullstack-js'
+          },
+          {
+            id: 4,
+            title: 'Container Monitoring Tool',
+            image:
+              'https://via.placeholder.com/400x200.png?text=Container+Monitoring+Tool',
+            description:
+              'A simple monitoring dashboard for Docker containers, built with Vue and Python.',
+            technologies: ['Docker', 'Vue', 'Python'],
+            link: '/portfolio/container-monitoring'
+          },
+        ]
+      };
+    },
+    computed: {
+      // Return projects that match any selected filters
+      filteredProjects() {
+        if (this.selectedTechs.length === 0) {
+          return this.projects;
+        }
+        return this.projects.filter((proj) =>
+          proj.technologies.some((tech) => this.selectedTechs.includes(tech))
+        );
+      }
+    },
+    methods: {
+      toggleTechFilter(tech) {
+        if (this.selectedTechs.includes(tech)) {
+          // Remove filter if already selected
+          this.selectedTechs = this.selectedTechs.filter(
+            (t) => t !== tech
+          );
+        } else {
+          // Add filter
+          this.selectedTechs.push(tech);
+        }
+      }
     }
-}
-</script>
-
-<style></style>
+  };
+  </script>
+  <style scoped>
+  .text-coolGray {
+    color: #9CA3AF;
+  }
+  </style>
