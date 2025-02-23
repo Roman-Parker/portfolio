@@ -1,35 +1,41 @@
 {
-    "compilerOptions": {
-        // Target a modern version of JavaScript
-        "target": "ESNext",
-        // Specify module code generation
-        "module": "ESNext",
-        // Allow synthetic default imports from non-ES modules
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        // Resolve .vue files
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        // Where compiled files go if you run `tsc` directly (usually build tools handle bundling though)
-        "outDir": "dist",
-        // Remove comments from output
-        "removeComments": true,
-        // Strict type-checking
-        "strict": true,
-        // Enable .vue support via the `vue-tsc` or specialized loaders
-        "jsx": "preserve",
-        // Import helpers from tslib to reduce bundle size
-        "importHelpers": true,
-        // Generate .map files for debugging
-        "sourceMap": true
-    },
-    "include": [
-        "src/**/*.ts",
-        "src/**/*.d.ts",
-        "src/**/*.vue"
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": [
+      "webpack-env"
     ],
-    "exclude": [
-        "node_modules",
-        "dist"
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
     ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
