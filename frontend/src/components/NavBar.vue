@@ -1,6 +1,6 @@
 <template>
     <!-- Navbar -->
-    <header class="bg-gunmetal">
+    <header class="bg-darkSlate">
         <nav
           class="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between"
         >
@@ -71,7 +71,7 @@
             </router-link>
           </div>
 
-          <!-- (Optional) Mobile Menu Toggle for small screens -->
+          <!-- FIXME: Mobile toggle? -->
         </nav>
       </header>
 </template>
