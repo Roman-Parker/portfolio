@@ -22,7 +22,7 @@
               Home
               <!-- Animated Underline -->
               <span
-                class="absolute left-1/2 -translate-x-1/2 bottom-0 h-[2px] w-full bg-current
+                class="absolute left-1/2 -translate-x-1/2 bottom-0 h-[3px] w-full bg-current
                        scale-x-0 group-hover:scale-x-100 origin-center
                        transition-transform duration-300"
               ></span>
@@ -36,7 +36,7 @@
             >
               Portfolio
               <span
-                class="absolute left-1/2 -translate-x-1/2 bottom-0 h-[2px] w-full bg-current
+                class="absolute left-1/2 -translate-x-1/2 bottom-0 h-[3px] w-full bg-current
                        scale-x-0 group-hover:scale-x-100 origin-center
                        transition-transform duration-300"
               ></span>
@@ -50,7 +50,7 @@
             >
               About me
               <span
-                class="absolute left-1/2 -translate-x-1/2 bottom-0 h-[2px] w-full bg-current
+                class="absolute left-1/2 -translate-x-1/2 bottom-0 h-[3px] w-full bg-current
                        scale-x-0 group-hover:scale-x-100 origin-center
                        transition-transform duration-300"
               ></span>
@@ -64,7 +64,7 @@
             >
               Contact
               <span
-                class="absolute left-1/2 -translate-x-1/2 bottom-0 h-[2px] w-full bg-current
+                class="absolute left-1/2 -translate-x-1/2 bottom-0 h-[3px] w-full bg-current
                        scale-x-0 group-hover:scale-x-100 origin-center
                        transition-transform duration-300"
               ></span>
