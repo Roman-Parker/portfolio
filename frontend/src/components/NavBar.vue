@@ -21,11 +21,7 @@
             >
               Home
               <!-- Animated Underline -->
-              <span
-                class="absolute left-1/2 -translate-x-1/2 bottom-0 h-[3px] w-full bg-current
-                       scale-x-0 group-hover:scale-x-100 origin-center
-                       transition-transform duration-300"
-              ></span>
+              <AnimatedUnderline/>
             </router-link>
 
             <!-- Portfolio -->
@@ -35,11 +31,7 @@
               active-class="text-turquoise font-semibold"
             >
               Portfolio
-              <span
-                class="absolute left-1/2 -translate-x-1/2 bottom-0 h-[3px] w-full bg-current
-                       scale-x-0 group-hover:scale-x-100 origin-center
-                       transition-transform duration-300"
-              ></span>
+              <AnimatedUnderline/>
             </router-link>
 
             <!-- About Me -->
@@ -49,11 +41,7 @@
               active-class="text-turquoise font-semibold"
             >
               About me
-              <span
-                class="absolute left-1/2 -translate-x-1/2 bottom-0 h-[3px] w-full bg-current
-                       scale-x-0 group-hover:scale-x-100 origin-center
-                       transition-transform duration-300"
-              ></span>
+              <AnimatedUnderline/>
             </router-link>
 
             <!-- Contact -->
@@ -63,11 +51,7 @@
               active-class="text-turquoise font-semibold"
             >
               Contact
-              <span
-                class="absolute left-1/2 -translate-x-1/2 bottom-0 h-[3px] w-full bg-current
-                       scale-x-0 group-hover:scale-x-100 origin-center
-                       transition-transform duration-300"
-              ></span>
+              <AnimatedUnderline/>
             </router-link>
           </div>
 
@@ -77,7 +61,12 @@
 </template>
 
 <script>
+import AnimatedUnderline from '@/components/AnimatedUnderline.vue'
 export default {
-    name: 'NavBar'
+    name: 'NavBar',
+
+    components: {
+        AnimatedUnderline
+    }
 }
 </script>
