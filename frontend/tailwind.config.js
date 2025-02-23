@@ -5,7 +5,7 @@ module.exports = {
         extend: {
             colors: {
                 darkSlate: '#0F172A',
-                gunmetal: '#141A1F',
+                gunmetal: '#1E293B',
                 turquoise: {
                     DEFAULT: '#14B8A6',
                     light: '#2DD4BF',
@@ -16,4 +16,5 @@ module.exports = {
         },
     },
     plugins: [],
+    darkMode: 'class'
 }
