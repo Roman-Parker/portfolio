@@ -5,7 +5,6 @@
                 transition-transform duration-300"
         >
     </span>
-
 </template>
 
 <script>
