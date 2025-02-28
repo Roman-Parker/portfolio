@@ -4,7 +4,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.dev
     ports:
-      - "8080:8080"
+      - "7722:7722"
     volumes:
       - ./frontend:/frontend
     environment:
