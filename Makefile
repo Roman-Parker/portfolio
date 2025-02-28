@@ -1,8 +1,8 @@
 # This Makefile provides shortcuts for building, running, and stopping
 # Docker Compose setups in both dev and prod modes.
 
-COMPOSE_DEV = docker-compose -f docker-compose.dev.yml
-COMPOSE_PROD = docker-compose -f docker-compose.prod.yml
+COMPOSE_DEV = docker compose -f docker-compose.dev.yml
+COMPOSE_PROD = docker compose -f docker-compose.prod.yml
 
 .PHONY: help dev dev-down build-dev logs-dev prod prod-down build-prod logs-prod
 
