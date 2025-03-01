@@ -1,40 +1,55 @@
-# This Makefile provides shortcuts for building, running, and stopping
-# Docker Compose setups in both dev and prod modes.
+# Makefile for managing Docker Compose environments
 
-COMPOSE_DEV = docker compose -f docker-compose.dev.yml
+COMPOSE = docker compose -f docker-compose.dev.yml
 COMPOSE_PROD = docker compose -f docker-compose.prod.yml
 
-.PHONY: help dev dev-down build-dev logs-dev prod prod-down build-prod logs-prod
+.PHONY: all help up down rebuild build logs prod-up prod-down build-prod logs-prod
+
+## Default: Start the environment and display logs immediately
+all: up-with-logs
 
 help:
 	@echo "Usage:"
-	@echo "  make dev        - Start development environment (detached)"
-	@echo "  make dev-down   - Stop development environment"
-	@echo "  make build-dev  - Build dev images"
-	@echo "  make logs-dev   - Follow logs for dev environment"
+	@echo "  make            - Start dev environment with logs"
+	@echo "  make up         - Start environment (detached)"
+	@echo "  make down       - Stop environment"
+	@echo "  make rebuild    - Stop, rebuild, and restart with logs"
+	@echo "  make purge      - Remove only this project's containers, volumes, and networks"
+	@echo "  make build      - Build images"
+	@echo "  make logs       - Follow logs for the environment"
 	@echo ""
-	@echo "  make prod       - Start production environment (detached)"
+	@echo "  make prod-up    - Start production environment (detached)"
 	@echo "  make prod-down  - Stop production environment"
 	@echo "  make build-prod - Build production images"
 	@echo "  make logs-prod  - Follow logs for production environment"
 	@echo ""
 	@echo "  make help       - Show this help"
 
-# Development environment
-dev:
-	$(COMPOSE_DEV) up -d
+### Development environment commands ###
 
-dev-down:
-	$(COMPOSE_DEV) down
+up:
+	$(COMPOSE) up -d
 
-build-dev:
-	$(COMPOSE_DEV) build
+down:
+	$(COMPOSE) down
 
-logs-dev:
-	$(COMPOSE_DEV) logs -f
+rebuild:
+	$(COMPOSE) down
+	$(COMPOSE) build
+	$(COMPOSE) up && $(COMPOSE) logs -f
 
-# Production environment
-prod:
+build:
+	$(COMPOSE) build
+
+logs:
+	$(COMPOSE) logs -f
+
+up-with-logs:
+	$(COMPOSE) up && $(COMPOSE) logs -f
+
+
+### Production environment commands ###
+prod-up:
 	$(COMPOSE_PROD) up -d
 
 prod-down:
