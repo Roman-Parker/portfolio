@@ -6,7 +6,7 @@ COMPOSE_PROD = docker compose -f docker-compose.prod.yml
 .PHONY: all help up down rebuild build logs prod-up prod-down build-prod logs-prod
 
 ## Default: Start the environment and display logs immediately
-all: up-with-logs
+all: up
 
 help:
 	@echo "Usage:"
@@ -20,15 +20,15 @@ help:
 	@echo ""
 	@echo "  make prod-up    - Start production environment (detached)"
 	@echo "  make prod-down  - Stop production environment"
-	@echo "  make build-prod - Build production images"
-	@echo "  make logs-prod  - Follow logs for production environment"
+	@echo "  make prod-build - Build production images"
+	@echo "  make prod-logs  - Follow logs for production environment"
 	@echo ""
 	@echo "  make help       - Show this help"
 
 ### Development environment commands ###
 
 up:
-	$(COMPOSE) up -d
+	$(COMPOSE) up -d && $(COMPOSE) logs -f
 
 down:
 	$(COMPOSE) down
@@ -44,19 +44,22 @@ build:
 logs:
 	$(COMPOSE) logs -f
 
-up-with-logs:
-	$(COMPOSE) up && $(COMPOSE) logs -f
-
 
 ### Production environment commands ###
 prod-up:
 	$(COMPOSE_PROD) up -d
+	$(COMPOSE_PROD) logs -f
 
 prod-down:
 	$(COMPOSE_PROD) down
 
-build-prod:
+prod-build:
 	$(COMPOSE_PROD) build
 
-logs-prod:
+prod-rebuild:
+	$(COMPOSE_PROD) down
+	$(COMPOSE_PROD) build
+	$(COMPOSE_PROD) up -d && $(COMPOSE_PROD) logs -f
+
+prod-logs:
 	$(COMPOSE_PROD) logs -f
