@@ -53,6 +53,7 @@
               Contact
               <AnimatedUnderline/>
             </router-link>
+            <DarkModeToggle/>
           </div>
 
           <!-- FIXME: Mobile toggle? -->
@@ -61,12 +62,14 @@
 </template>
 
 <script>
-import AnimatedUnderline from '@/components/AnimatedUnderline.vue'
+import AnimatedUnderline from '@/components/AnimatedUnderline.vue';
+import DarkModeToggle from './DarkModeToggle.vue';
 export default {
     name: 'NavBar',
 
     components: {
-        AnimatedUnderline
+        AnimatedUnderline,
+        DarkModeToggle
     }
 }
 </script>
