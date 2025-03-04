@@ -11,15 +11,23 @@
             Explore my portfolio to see some of the stuff that i have been working on!
         </p>
 
-        <router-link to="/portfolio"
-            class="inline-block px-6 py-3 bg-turquoise hover:bg-turquoise-light text-gunmetal font-semibold rounded transition-colors">
-            View projects
-        </router-link>
+        <div>
+            <router-link to="/portfolio"
+                class="inline-block px-6 py-3 bg-turquoise hover:bg-turquoise-light text-gunmetal font-semibold rounded transition-colors">
+                View projects
+            </router-link>
+
+            <DownloadResumeButton class="ml-2"/>
+        </div>
     </section>
 </template>
 
 <script>
+import DownloadResumeButton from '@/components/DownloadResumeButton.vue';
 export default {
-    name: 'HomeView'
+    name: 'HomeView',
+    components: {
+        DownloadResumeButton
+    }
 }
 </script>
