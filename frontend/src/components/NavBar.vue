@@ -14,28 +14,28 @@
                 <!-- Home -->
                 <router-link to="/" class="relative group transition-colors"
                     exact-active-class="text-turquoise font-semibold">
-                    Home
+                    <span>{{$t('home')}}</span>
                     <AnimatedUnderline />
                 </router-link>
 
                 <!-- Portfolio -->
                 <router-link to="/portfolio" class="relative group transition-colors"
                     active-class="text-turquoise font-semibold">
-                    Portfolio
+                    <span>{{$t('projects')}}</span>
                     <AnimatedUnderline />
                 </router-link>
 
                 <!-- About Me -->
                 <router-link to="/about" class="relative group transition-colors"
                     active-class="text-turquoise font-semibold">
-                    About me
+                    <span>{{$t('about_me')}}</span>
                     <AnimatedUnderline />
                 </router-link>
 
                 <!-- Contact -->
                 <router-link to="/contact" class="relative group transition-colors"
                     active-class="text-turquoise font-semibold">
-                    Contact
+                    <span>{{$t('contact')}}</span>
                     <AnimatedUnderline />
                 </router-link>
                 <DarkModeToggle />
