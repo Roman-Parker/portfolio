@@ -17,6 +17,10 @@ help:
 	@echo "  make purge      - Remove only this project's containers, volumes, and networks"
 	@echo "  make build      - Build images"
 	@echo "  make logs       - Follow logs for the environment"
+	@echo "  make test       - Run all tests"
+	@echo "  make test-watch - Run tests in watch mode"
+	@echo "  make test-file  - Run a specific test file (pass as TEST=<filename>)"
+	@echo "  make test-coverage - Run tests with coverage"
 	@echo ""
 	@echo "  make prod-up    - Start production environment (detached)"
 	@echo "  make prod-down  - Stop production environment"
@@ -43,6 +47,25 @@ build:
 
 logs:
 	$(COMPOSE) logs -f
+
+FRONTEND_DIR = frontend
+VITEST = npx vitest
+
+# Run all tests inside frontend/
+test:
+	@cd $(FRONTEND_DIR) && $(VITEST) --run
+
+# Run tests in watch mode
+test-watch:
+	@cd $(FRONTEND_DIR) && $(VITEST)
+
+# Run a specific test file (pass as TEST=<filename>)
+test-file:
+	@cd $(FRONTEND_DIR) && $(VITEST) --run --include $(TEST)
+
+# Run tests with coverage
+test-coverage:
+	@cd $(FRONTEND_DIR) && $(VITEST) --coverage
 
 
 ### Production environment commands ###

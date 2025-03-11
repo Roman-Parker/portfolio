@@ -14,34 +14,32 @@
                 <!-- Home -->
                 <router-link to="/" class="relative group transition-colors"
                     exact-active-class="text-turquoise font-semibold">
-                    <span>{{$t('home')}}</span>
+                    <span>{{ $t('home') }}</span>
                     <AnimatedUnderline />
                 </router-link>
 
                 <!-- Portfolio -->
                 <router-link to="/portfolio" class="relative group transition-colors"
                     active-class="text-turquoise font-semibold">
-                    <span>{{$t('projects')}}</span>
+                    <span>{{ $t('projects') }}</span>
                     <AnimatedUnderline />
                 </router-link>
 
                 <!-- About Me -->
                 <router-link to="/about" class="relative group transition-colors"
                     active-class="text-turquoise font-semibold">
-                    <span>{{$t('about_me')}}</span>
+                    <span>{{ $t('about_me') }}</span>
                     <AnimatedUnderline />
                 </router-link>
 
                 <!-- Contact -->
                 <router-link to="/contact" class="relative group transition-colors"
                     active-class="text-turquoise font-semibold">
-                    <span>{{$t('contact')}}</span>
+                    <span>{{ $t('contact') }}</span>
                     <AnimatedUnderline />
                 </router-link>
-                <DarkModeToggle />
-                <LanguageSwitcher />
             </div>
-
+            <LanguageSwitcher />
             <!-- FIXME: Mobile toggle -->
         </nav>
     </header>
@@ -49,14 +47,12 @@
 
 <script>
 import AnimatedUnderline from '@/components/AnimatedUnderline.vue';
-import DarkModeToggle from './DarkModeToggle.vue';
 import LanguageSwitcher from './LanguageSwitcher.vue';
 export default {
     name: 'NavBar',
 
     components: {
         AnimatedUnderline,
-        DarkModeToggle,
         LanguageSwitcher
     }
 }
