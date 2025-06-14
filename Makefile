@@ -38,8 +38,8 @@ down:
 	$(COMPOSE) down
 
 rebuild:
-	$(COMPOSE) down
-	$(COMPOSE) build
+	$(COMPOSE) down -v
+	$(COMPOSE) build --no-cache
 	$(COMPOSE) up && $(COMPOSE) logs -f
 
 build:
