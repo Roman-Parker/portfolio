@@ -14,28 +14,28 @@
                 <!-- Home -->
                 <router-link to="/" class="relative group transition-colors"
                     exact-active-class="text-turquoise font-semibold">
-                    <span>{{ $t('home') }}</span>
+                    <span>{{ t('home') }}</span>
                     <AnimatedUnderline />
                 </router-link>
 
                 <!-- Portfolio -->
                 <router-link to="/portfolio" class="relative group transition-colors"
                     active-class="text-turquoise font-semibold">
-                    <span>{{ $t('projects') }}</span>
+                    <span>{{ t('projects') }}</span>
                     <AnimatedUnderline />
                 </router-link>
 
                 <!-- About Me -->
                 <router-link to="/about" class="relative group transition-colors"
                     active-class="text-turquoise font-semibold">
-                    <span>{{ $t('about_me') }}</span>
+                    <span>{{ t('about_me') }}</span>
                     <AnimatedUnderline />
                 </router-link>
 
                 <!-- Contact -->
                 <router-link to="/contact" class="relative group transition-colors"
                     active-class="text-turquoise font-semibold">
-                    <span>{{ $t('contact') }}</span>
+                    <span>{{ t('contact') }}</span>
                     <AnimatedUnderline />
                 </router-link>
             </div>
@@ -45,15 +45,10 @@
     </header>
 </template>
 
-<script>
-import AnimatedUnderline from '@/components/AnimatedUnderline.vue';
-import LanguageSwitcher from './LanguageSwitcher.vue';
-export default {
-    name: 'NavBar',
+<script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+import AnimatedUnderline from '@/components/AnimatedUnderline.vue'
+import LanguageSwitcher from './LanguageSwitcher.vue'
 
-    components: {
-        AnimatedUnderline,
-        LanguageSwitcher
-    }
-}
+const { t } = useI18n()
 </script>
