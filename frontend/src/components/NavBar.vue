@@ -12,29 +12,29 @@
             <!-- Navigation Links -->
             <div class="space-x-6 hidden sm:flex">
                 <!-- Home -->
-                <router-link to="/" class="relative group transition-colors"
-                    exact-active-class="text-turquoise font-semibold">
+                <router-link to="/" class="relative group transition-colors font-semibold"
+                    exact-active-class="text-turquoise">
                     <span>{{ t('home') }}</span>
                     <AnimatedUnderline />
                 </router-link>
 
                 <!-- Portfolio -->
-                <router-link to="/portfolio" class="relative group transition-colors"
-                    active-class="text-turquoise font-semibold">
+                <router-link to="/portfolio" class="relative group transition-colors font-semibold"
+                    active-class="text-turquoise">
                     <span>{{ t('projects') }}</span>
                     <AnimatedUnderline />
                 </router-link>
 
                 <!-- About Me -->
-                <router-link to="/about" class="relative group transition-colors"
-                    active-class="text-turquoise font-semibold">
+                <router-link to="/about" class="relative group transition-colors font-semibold"
+                    active-class="text-turquoise">
                     <span>{{ t('about_me') }}</span>
                     <AnimatedUnderline />
                 </router-link>
 
                 <!-- Contact -->
-                <router-link to="/contact" class="relative group transition-colors"
-                    active-class="text-turquoise font-semibold">
+                <router-link to="/contact" class="relative group transition-colors font-semibold"
+                    active-class="text-turquoise">
                     <span>{{ t('contact') }}</span>
                     <AnimatedUnderline />
                 </router-link>
