@@ -2,3 +2,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --bg: #F8FAFC;                /* offWhite */
+    --surface: #FFFFFF;
+    --text: #1E293B;              /* gunmetal */
+    --muted: #9CA3AF;             /* coolGray */
+    --accent: #14B8A6;            /* turquoise */
+    --accent-light: #2DD4BF;      /* turquoise.light */
+    --border: #E5E7EB;
+}
+
+.dark {
+    --bg: #0F172A;                /* darkSlate */
+    --surface: #1E293B;           /* gunmetal */
+    --text: #F8FAFC;              /* offWhite */
+    --muted: #9CA3AF;             /* coolGray (used subtly) */
+    --accent: #2DD4BF;            /* turquoise.light */
+    --accent-light: #5EEAD4;      /* slightly brighter turquoise */
+    --border: #334155;
+}
+
+
+.theme-solarized {
+    --bg: #002B36;                /* base03 */
+    --surface: #073642;           /* base02 */
+    --text: #EEE8D5;              /* base2 */
+    --muted: #93A1A1;             /* base1 */
+    --accent: #B58900;            /* yellow */
+    --accent-light: #CB4B16;      /* orange */
+    --border: #586E75;            /* base01 */
+}
+
+/* Smooth transition for background and text */
+html, body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}

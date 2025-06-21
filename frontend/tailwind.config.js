@@ -4,14 +4,13 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                darkSlate: "#0F172A",
-                gunmetal: "#1E293B",
-                turquoise: {
-                    DEFAULT: "#14B8A6",
-                    light: "#2DD4BF",
-                },
-                coolGray: "#9CA3AF",
-                offWhite: "#F8FAFC",
+                background: 'var(--bg)',
+                surface: 'var(--surface)',
+                text: 'var(--text)',
+                muted: 'var(--muted)',
+                accent: 'var(--accent)',
+                accentLight: 'var(--accent-light)',
+                border: 'var(--border)',
             },
         },
     },
