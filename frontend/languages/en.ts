@@ -9,7 +9,7 @@ const en = {
     message: "Message",
     send: "Send",
     contact_me: "Contact me",
-    about_me: "About me"
-  } as const;
+    about_me: "About me",
+} as const;
 
-export default en
+export default en;

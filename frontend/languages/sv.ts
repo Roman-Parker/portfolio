@@ -9,7 +9,7 @@ const sv = {
     message: "Meddelande",
     send: "Skicka",
     contact_me: "Kontakta mig",
-    about_me: "Om mig"
-  } as const;
+    about_me: "Om mig",
+} as const;
 
-  export default sv;
+export default sv;

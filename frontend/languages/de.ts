@@ -9,7 +9,7 @@ const de = {
     message: "Nachricht",
     send: "Senden",
     contact_me: "Kontaktiere mich",
-    about_me: "Über mich"
-  } as const;
+    about_me: "Über mich",
+} as const;
 
-  export default de;
+export default de;
