@@ -1,7 +1,7 @@
 <template>
     <!-- Full-height, dark background section -->
     <section
-        class="bg-darkSlate min-h-screen flex items-center justify-center px-4 py-8 text-offWhite"
+        class="bg-background min-h-screen flex items-center justify-center px-4 py-8 text-text"
     >
         <div class="w-full max-w-md bg-gunmetal rounded-lg shadow-lg p-6">
             <h1 class="text-3xl font-bold mb-6 text-center">Contact</h1>
@@ -60,7 +60,7 @@
                     <input
                         type="checkbox"
                         id="copy"
-                        class="rounded text-turquoise focus:ring-turquoise mr-2 cursor-pointer"
+                        class="rounded text-accent focus:ring-turquoise mr-2 cursor-pointer"
                         checked
                     />
                     <label
@@ -74,7 +74,7 @@
                 <!-- Submit Button -->
                 <button
                     type="submit"
-                    class="w-full py-2 bg-turquoise hover:bg-turquoise-light text-gunmetal font-semibold rounded transition-colors"
+                    class="w-full py-2 bg-accent hover:bg-accentLight text-surface font-semibold rounded transition-colors"
                 >
                     Send
                 </button>

@@ -2,7 +2,7 @@
     <div class="relative">
         <button
             @click="toggleDropdown"
-            class="px-4 py-2 border-2 border-turquoise text-turquoise rounded-md hover:bg-turquoise hover:text-gunmetal transition-colors"
+            class="px-4 py-2 border-2 border-turquoise texr-accent rounded-md hover:bg-accent hover:text-surface transition-colors"
         >
             {{ currentLanguageLabel }}
         </button>
@@ -16,7 +16,7 @@
                     v-for="(label, code) in availableLanguages"
                     :key="code"
                     @click="changeLanguage(code)"
-                    class="px-4 py-2 cursor-pointer hover:bg-turquoise hover:text-gunmetal transition-colors"
+                    class="px-4 py-2 cursor-pointer hover:bg-accent hover:text-surface transition-colors"
                 >
                     {{ label }}
                 </li>

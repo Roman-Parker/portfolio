@@ -1,7 +1,7 @@
 <template>
     <button
         @click="downloadResume"
-        class="inline-block px-6 py-3 border-2 border-turquoise text-turquoise font-semibold rounded transition-colors hover:bg-turquoise hover:text-gunmetal"
+        class="inline-block px-6 py-3 border-2 border-turquoise text-accent font-semibold rounded transition-colors hover:bg- hover:text-surface"
     >
         Resume
     </button>

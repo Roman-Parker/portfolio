@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-darkSlate text-offWhite">
+    <div class="min-h-screen bg-background text-text">
         <!-- Portfolio Container -->
         <section class="container mx-auto px-4 py-8">
             <h1 class="text-4xl md:text-5xl font-bold text-center mb-8">
@@ -15,8 +15,8 @@
                     class="px-4 py-2 rounded border border-turquoise transition-colors"
                     :class="
                         selectedTechs.includes(tech)
-                            ? 'bg-turquoise text-gunmetal'
-                            : 'bg-gunmetal text-offWhite hover:bg-turquoise-light hover:text-gunmetal'
+                            ? 'bg-accent surface'
+                            : 'bg-gunmetal text-text hover:bg-accent-light hover:text-surface'
                     "
                 >
                     {{ tech }}
@@ -39,7 +39,7 @@
                     <h3 class="text-xl font-semibold mb-2">
                         {{ project.title }}
                     </h3>
-                    <p class="text-base text-coolGray mb-4">
+                    <p class="text-base text-muted mb-4">
                         {{ project.description }}
                     </p>
 
@@ -48,7 +48,7 @@
                         <span
                             v-for="tech in project.technologies"
                             :key="tech"
-                            class="text-sm bg-turquoise text-gunmetal px-2 py-1 rounded"
+                            class="text-sm bg-accent text-surface px-2 py-1 rounded"
                         >
                             {{ tech }}
                         </span>
@@ -57,7 +57,7 @@
                     <!-- View Project Button or Link -->
                     <router-link
                         :to="project.link"
-                        class="mt-auto inline-block px-4 py-2 bg-turquoise hover:bg-turquoise-light text-gunmetal rounded font-semibold transition-colors"
+                        class="mt-auto inline-block px-4 py-2 bg-accent hover:bg-accent-light text-surface rounded font-semibold transition-colors"
                     >
                         View Project
                     </router-link>
@@ -153,8 +153,3 @@ export default {
     },
 };
 </script>
-<style scoped>
-.text-coolGray {
-    color: #9ca3af;
-}
-</style>

@@ -1,6 +1,6 @@
 <template>
     <section
-        class="bg-darkSlate text-offWhite min-h-screen flex items-center justify-center py-12 px-4"
+        class="bg-background text-text min-h-screen flex items-center justify-center py-12 px-4"
     >
         <div class="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Image / Photo Column -->
@@ -17,7 +17,7 @@
             <div class="flex flex-col justify-center">
                 <h1 class="text-4xl font-bold mb-4">About Me</h1>
                 <p class="mb-4 leading-relaxed">
-                    Hi there! I'm <span class="text-turquoise">Roman</span>, a
+                    Hi there! I'm <span class="text-accent">Roman</span>, a
                     Full-Stack Developer. I enjoy creating things that live on
                     the internet, whether that be websites, applications, or
                     anything in between. I specialize in technologies like
@@ -34,9 +34,9 @@
                     include reading up on the latest tech trends, and
                     contributing to open-source projects.
                 </p>
-                <p class="text-coolGray">
+                <p class="text-muted">
                     Currently based in
-                    <span class="text-offWhite font-medium">Linköping</span>.
+                    <span class="text-text font-medium">Linköping</span>.
                 </p>
             </div>
         </div>

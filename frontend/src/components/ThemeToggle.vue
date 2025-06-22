@@ -1,8 +1,15 @@
 <template>
     <div class="relative inline-flex items-center">
-        <select v-model="selectedTheme" @change="onChange"
-            class="bg-surface text-text text-sm border border-border rounded px-2 py-1 appearance-none pr-6 transition-colors duration-300">
-            <option v-for="theme in themes" :key="theme.value" :value="theme.value">
+        <select
+            v-model="selectedTheme"
+            @change="onChange"
+            class="bg-surface text-text text-sm border border-border rounded px-2 py-1 appearance-none pr-6 transition-colors duration-300"
+        >
+            <option
+                v-for="theme in themes"
+                :key="theme.value"
+                :value="theme.value"
+            >
                 {{ theme.label }}
             </option>
         </select>
@@ -13,32 +20,32 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
+import { ref, onMounted } from "vue";
 
 const themes = [
-    { label: 'Light', value: 'light' },
-    { label: 'Dark', value: 'dark' },
-    { label: 'Solar', value: 'theme-solarized' }
-]
+    { label: "Light", value: "light" },
+    { label: "Dark", value: "dark" },
+    { label: "Solar", value: "theme-solarized" },
+];
 
-const selectedTheme = ref('light')
+const selectedTheme = ref("light");
 
 const setTheme = (theme: string) => {
-    const html = document.documentElement
-    html.classList.remove('light', 'dark', 'theme-solarized')
-    html.classList.add(theme)
-    localStorage.setItem('theme', theme)
-}
+    const html = document.documentElement;
+    html.classList.remove("light", "dark", "theme-solarized");
+    html.classList.add(theme);
+    localStorage.setItem("theme", theme);
+};
 
 const onChange = () => {
-    setTheme(selectedTheme.value)
-}
+    setTheme(selectedTheme.value);
+};
 
 onMounted(() => {
-    const saved = localStorage.getItem('theme') || 'light'
-    selectedTheme.value = saved
-    setTheme(saved)
-})
+    const saved = localStorage.getItem("theme") || "light";
+    selectedTheme.value = saved;
+    setTheme(saved);
+});
 </script>
 
 <style scoped>
