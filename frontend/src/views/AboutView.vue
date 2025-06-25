@@ -1,13 +1,13 @@
 <template>
-    <section class="bg-background text-text min-h-screen flex items-center justify-center py-12 px-4">
+    <section class="bg-background text-text min-h-screen flex items-center justify-center">
         <div class="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Image / Photo Column -->
             <div class="flex justify-center items-center">
                 <!-- Replace this placeholder with your actual photo or illustration -->
                 <img
                     src="@/assets/picture_of_me.jpeg"
-                    alt="Your Photo"
-                    class="rounded-full border-4 border-turquoise shadow-lg"
+                    alt="Picture of Roman Parker"
+                    class="rounded-full border-4 border-accent shadow-lg"
                 />
             </div>
 

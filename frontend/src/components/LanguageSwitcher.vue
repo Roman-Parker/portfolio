@@ -3,14 +3,14 @@
         <button
             @click="toggleDropdown"
             ref="dropDownRef"
-            class="px-4 py-2 border-2 border-turquoise texr-accent rounded-md hover:bg-accent hover:text-surface transition-colors"
+            class="px-4 py-2 border-2 border-accent texr-accent rounded-md hover:bg-accent hover:text-surface transition-colors"
         >
             {{ currentLanguageLabel }}
         </button>
 
         <div
             v-if="isOpen"
-            class="absolute mt-2 w-full bg-gunmetal border border-turquoise rounded-md shadow-lg duration-300"
+            class="absolute mt-2 w-full bg-gunmetal border border-accent rounded-md shadow-lg duration-300"
         >
             <ul class="py-2">
                 <li
