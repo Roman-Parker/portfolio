@@ -14,7 +14,7 @@
                     :class="
                         selectedTechs.includes(tech)
                             ? 'bg-accent surface'
-                            : 'bg-gunmetal text-text hover:bg-accent-light hover:text-surface'
+                            : 'bg-gunmetal text-text hover:bg-accent-light hover:text-accent'
                     "
                 >
                     {{ tech }}
