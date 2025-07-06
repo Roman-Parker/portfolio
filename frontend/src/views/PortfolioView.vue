@@ -74,7 +74,7 @@ export default {
             selectedTechs: [],
 
             // Example filters
-            allTechnologies: ["Python", "Vue", "Docker", "JavaScript", "Node.js"],
+            allTechnologies: ["Python", "Vue", "Docker", "JavaScript", "Node.js", ".NET", "React"],
 
             // Example project data
             projects: [
