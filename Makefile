@@ -7,10 +7,6 @@ ifeq ($(DOCKER_COMPOSE),)
 $(error Neither 'docker compose' nor 'docker-compose' found. Install the Compose plugin or docker-compose.)
 endif
 
-COMPOSE      = $(DOCKER_COMPOSE) -f docker-compose.dev.yml
-COMPOSE_PROD = $(DOCKER_COMPOSE) -f docker-compose.prod.yml
-
-
 # ---- Settings ----
 COMPOSE_PROJECT_NAME ?= portfolio
 export COMPOSE_PROJECT_NAME
@@ -18,8 +14,8 @@ export COMPOSE_PROJECT_NAME
 DEV_FILE  := docker-compose.dev.yml
 PROD_FILE := docker-compose.prod.yml
 
-COMPOSE      := docker compose -f $(DEV_FILE)
-COMPOSE_PROD := docker compose -f $(PROD_FILE)
+COMPOSE      := $(DOCKER_COMPOSE) -f $(DEV_FILE)
+COMPOSE_PROD := $(DOCKER_COMPOSE) -f $(PROD_FILE)
 
 # Uncomment if you need cross-arch builds from Apple Silicon → x86
 # export DOCKER_DEFAULT_PLATFORM=linux/amd64
