@@ -1,25 +1,25 @@
 services:
-    frontend:
-        build:
-            context: ./frontend
-            dockerfile: Dockerfile.prod
-        container_name: frontend_prod
-        expose:
-            - "80" # Internal port
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    expose:
+      - "80"                                 # internal only; Caddy proxies to this
+    restart: unless-stopped
 
-    caddy:
-        image: caddy:2.8
-        depends_on:
-            - frontend
-        ports:
-            - "80:80"
-            - "443:443"
-        volumes:
-            - ./Caddyfile:/etc/caddy/Caddyfile
-            - caddy_data:/data
-            - caddy_config:/config
-        restart: unless-stopped
+  caddy:
+    image: caddy:2.8
+    depends_on:
+      - frontend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    restart: unless-stopped
 
 volumes:
-    caddy_data:
-    caddy_config:
+  caddy_data:
+  caddy_config:
