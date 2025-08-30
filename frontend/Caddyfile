@@ -1,0 +1,4 @@
+romanparker.se, www.romanparker.se {
+    encode gzip zstd
+    reverse_proxy frontend:80
+}
