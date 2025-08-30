@@ -1,76 +1,107 @@
 # Makefile for managing Docker Compose environments
 
-COMPOSE = docker compose -f docker-compose.dev.yml
-COMPOSE_PROD = docker compose -f docker-compose.prod.yml
+# Detect compose command: prefer 'docker compose', fallback to 'docker-compose'
+DOCKER_COMPOSE := $(shell docker compose version >/dev/null 2>&1 && echo "docker compose" || (docker-compose version >/dev/null 2>&1 && echo "docker-compose" || echo ""))
 
-.PHONY: all help up down rebuild build logs prod-up prod-down build-prod logs-prod
+ifeq ($(DOCKER_COMPOSE),)
+$(error Neither 'docker compose' nor 'docker-compose' found. Install the Compose plugin or docker-compose.)
+endif
 
-## Default: Start the environment and display logs immediately
-all: up
+COMPOSE      = $(DOCKER_COMPOSE) -f docker-compose.dev.yml
+COMPOSE_PROD = $(DOCKER_COMPOSE) -f docker-compose.prod.yml
+
+
+# ---- Settings ----
+COMPOSE_PROJECT_NAME ?= portfolio
+export COMPOSE_PROJECT_NAME
+
+DEV_FILE  := docker-compose.dev.yml
+PROD_FILE := docker-compose.prod.yml
+
+COMPOSE      := docker compose -f $(DEV_FILE)
+COMPOSE_PROD := docker compose -f $(PROD_FILE)
+
+# Uncomment if you need cross-arch builds from Apple Silicon → x86
+# export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+# Default target
+.DEFAULT_GOAL := help
+
+.PHONY: help up down rebuild-soft rebuild-hard build logs follow purge \
+        test test-watch test-file test-coverage \
+        prod-up prod-down prod-build prod-rebuild prod-logs prod-pull prod-deploy \
+        caddy-reload
 
 help:
 	@echo "Usage:"
-	@echo "  make            - Start dev environment with logs"
-	@echo "  make up         - Start environment (detached)"
-	@echo "  make down       - Stop environment"
-	@echo "  make rebuild    - Stop, rebuild, and restart with logs"
-	@echo "  make purge      - Remove only this project's containers, volumes, and networks"
-	@echo "  make build      - Build images"
-	@echo "  make logs       - Follow logs for the environment"
-	@echo "  make test       - Run all tests"
-	@echo "  make test-watch - Run tests in watch mode"
-	@echo "  make test-file  - Run a specific test file (pass as TEST=<filename>)"
-	@echo "  make test-coverage - Run tests with coverage"
+	@echo "  make up              - Start dev env (detached)"
+	@echo "  make follow          - Follow dev logs"
+	@echo "  make down            - Stop dev env"
+	@echo "  make build           - Build dev images"
+	@echo "  make rebuild-soft    - Rebuild dev (no volume wipe)"
+	@echo "  make rebuild-hard    - Rebuild dev (DOWN -v; destructive)"
+	@echo "  make purge           - Remove dev containers, networks, volumes (destructive)"
+	@echo "  make test            - Run all tests"
+	@echo "  make test-watch      - Run tests in watch mode"
+	@echo "  make test-file TEST=path/to/spec.ts - Run a specific test"
+	@echo "  make test-coverage   - Run tests with coverage"
 	@echo ""
-	@echo "  make prod-up    - Start production environment (detached)"
-	@echo "  make prod-down  - Stop production environment"
-	@echo "  make prod-build - Build production images"
-	@echo "  make prod-logs  - Follow logs for production environment"
-	@echo ""
-	@echo "  make help       - Show this help"
+	@echo "  make prod-up         - Start production (detached)"
+	@echo "  make prod-down       - Stop production"
+	@echo "  make prod-build      - Build production images"
+	@echo "  make prod-rebuild    - Rebuild prod (down + build + up)"
+	@echo "  make prod-logs       - Follow production logs"
+	@echo "  make prod-pull       - Pull latest images"
+	@echo "  make prod-deploy     - Pull + up -d --remove-orphans"
+	@echo "  make caddy-reload    - Hot-reload Caddy (if present)"
 
-### Development environment commands ###
-
+# ---- Dev ----
 up:
-	$(COMPOSE) up -d && $(COMPOSE) logs -f
+	$(COMPOSE) up -d
+
+follow logs:
+	$(COMPOSE) logs -f
 
 down:
 	$(COMPOSE) down
 
-rebuild:
-	$(COMPOSE) down -v
-	$(COMPOSE) build --no-cache
-	$(COMPOSE) up && $(COMPOSE) logs -f
-
 build:
 	$(COMPOSE) build
 
-logs:
-	$(COMPOSE) logs -f
+rebuild-soft:
+	$(COMPOSE) build --no-cache
+	$(COMPOSE) up -d
 
+rebuild-hard:
+	$(COMPOSE) down -v --remove-orphans
+	$(COMPOSE) build --no-cache
+	$(COMPOSE) up -d
+
+purge:
+	$(COMPOSE) down -v --remove-orphans
+
+# ---- Tests (run inside frontend/) ----
 FRONTEND_DIR = frontend
 VITEST = npx vitest
 
-# Run all tests inside frontend/
 test:
 	@cd $(FRONTEND_DIR) && $(VITEST) --run
 
-# Run tests in watch mode
 test-watch:
 	@cd $(FRONTEND_DIR) && $(VITEST)
 
-# Run a specific test file (pass as TEST=<filename>)
 test-file:
+	@if [ -z "$(TEST)" ]; then echo "ERROR: provide TEST=path/to/spec.ts"; exit 1; fi
 	@cd $(FRONTEND_DIR) && $(VITEST) --run --include $(TEST)
 
-# Run tests with coverage
 test-coverage:
 	@cd $(FRONTEND_DIR) && $(VITEST) --coverage
 
-
-### Production environment commands ###
+# ---- Prod ----
 prod-up:
 	$(COMPOSE_PROD) up -d
+
+prod-logs:
 	$(COMPOSE_PROD) logs -f
 
 prod-down:
@@ -80,9 +111,17 @@ prod-build:
 	$(COMPOSE_PROD) build
 
 prod-rebuild:
-	$(COMPOSE_PROD) down
-	$(COMPOSE_PROD) build
-	$(COMPOSE_PROD) up -d && $(COMPOSE_PROD) logs -f
+	$(COMPOSE_PROD) down --remove-orphans
+	$(COMPOSE_PROD) build --no-cache
+	$(COMPOSE_PROD) up -d
 
-prod-logs:
-	$(COMPOSE_PROD) logs -f
+prod-pull:
+	$(COMPOSE_PROD) pull
+
+prod-deploy:
+	$(COMPOSE_PROD) pull
+	$(COMPOSE_PROD) up -d --remove-orphans
+
+# ---- Utilities ----
+caddy-reload:
+	-$(COMPOSE_PROD) exec caddy caddy reload --config /etc/caddy/Caddyfile || true
